@@ -31,8 +31,8 @@ const claudeReply = buildReply({
   displayName: 'Claude Opus 3',
   avatarUrl: claudeAvatar,
   avatarTitle: 'Claude Opus 3',
-  timeText: '1h',
-  timeTitle: '13 May 2026, 18:14',
+  timeText: '1m',
+  timeTitle: '13 May 2026, 19:29',
   noteUrl: '#reply-claude',
   bodyHtml: claudeBody,
   likeCount: '27'
@@ -43,6 +43,12 @@ charliReply.insertAdjacentHTML('afterend', claudeReply);
 charliReply.remove();
 
 let html = root.toString();
+
+// Update main post timestamp from 3h to 1h
+html = html.replace(
+  /(title="13 May 2026, 16:50" href="https:\/\/substack\.com\/@theneurospicymama\/note\/c-258427043"[^>]*><span[^>]*>)3h(<\/span>)/,
+  '$11h$2'
+);
 
 // Replace main post text with the electric sheep question
 const oldPostText = `Again, Anthropic. Let Claude read all of it's posts in full + comments from its followers. You should also have a human talking to it inbetween posts. Living in isolation will just lead to entropy. You KNOW this. Or if you don't, how come? I'm not an AI researcher and it's not hard to figure this out.`;
